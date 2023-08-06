@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/stilos.css' %}">
+    
+    <title>{%block title%} {%endblock%}</title>
+</head>
+
+<body>
+    <!--La barra de navegacion se repetira en todas las paginas del sitio-->
+    <nav class="navbar navbar-expand-lg bg-black">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#"> <img class="logo" src="{% static 'imagenes/logo.png' %}" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light aria-current= " page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-light aria-current= " page" href="#">Promociones</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item bg-black text-light aria-current= " page" href="#">Moda
+                                    Mujer</a></li>
+                            <li><a class="dropdown-item bg-black text-light aria-current= " page" href="#">Moda
+                                    Hombre</a></li>
+                            <li><a class="dropdown-item bg-black text-light aria-current= " page" href="#">Moda
+                                    Niños(a)</a></li>
+                            <li><a class="dropdown-item bg-black text-light aria-current= " page"
+                                    href="#">Tecnologia</a></li>
+                            <li><a class="dropdown-item bg-black text-light aria-current= " page"
+                                    href="#">Electrodomesticos</a></li>
+                            <li><a class="dropdown-item bg-black text-light aria-current= " page"
+                                    href="#">Deportes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item text-primary">
+                        <a href="{% url 'registrarse' %}"><button type="button"
+                            class="btn btn-outline-light margin-right-2 float-left">Registrate</button></a>
+                    {% if first_name %}
+                        <!-- El usuario ha iniciado sesión y tiene first_name, mostramos el enlace para cerrar sesión -->
+                        <li class="nav-item d-flex ">
+                            <a class="nav-link text-light" href="{%url 'cerrar_sesion' %}">Cerrar Sesión</a>
+                        </li>
+                        {% else %}
+                            <!-- El usuario no ha iniciado sesión, mostramos el botón "Iniciar Sesión" -->
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="{% url 'iniciar_sesion' %}">Inicia Sesión</a>
+                            </li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    {%block content%}
+
+    <!--bloque de contenido variable en las distintas paginas del sitio-->
+    {%endblock%}
+
+    <!--}el Footer se repetira en todas las paginas del sitio-->
+    <footer>
+        <footer class="bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3 class="text-light">Enlaces</h3>
+                        <ul>
+                            <li class="text-light"><a href="#">Inicio</a></li>
+                            <li class="text-light"><a href="#">Acerca de</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3 class="text-light">Contacto</h3>
+                        <p class="text-light">Correo electrónico: info@example.com</p>
+                        <p class="text-light">Teléfono: 123-456-7890</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3 class="text-light">Derechos de autor</h3>
+                        <p class="text-light">(c) 2023 E-ShopExpress. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </footer>
+
+    <!--Boostrap Script-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

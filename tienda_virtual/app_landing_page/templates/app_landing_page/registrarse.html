@@ -1,0 +1,48 @@
+{%extends "app_landing_page/base.html"%}
+
+{%block title%} Registrarse {%endblock%}
+{%load static%}
+{%block content%}
+<link rel="stylesheet" href="{% static 'css/stilos.css' %}">
+<div class="container  form-container">
+    <div class=" row justify-content-center">
+        <div class="col-md-12 ">
+            <form class="form" method="POST" action="{% url 'registrarse' %}">
+                {% csrf_token %}
+                <h1 class="text-center text-light" >Fromulario de Registro</h1>
+                <div class="form-row r ">
+                    <div class="form-group ">
+                        <label for="">Ingrese Su nombre</label>
+                        <input type="text" name="nombre" class="form-control" id="" placeholder="Ingrese su nombre">
+                    </div>
+                    <div class="form-group  ">
+                        <label for="inputEmail4">Ingrese Su apellido</label>
+                        <input type="text"name="apellido" class="form-control" id="inputEmail4" placeholder="Ingrese su apellido">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail4">Ingrese su correo electronico</label>
+                    <input type="email" name="correo" class="form-control" id="" placeholder="ejemplo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="">Selccione su grupo</label>
+                    <select name="grupo" class="form-control">
+                        <option value="Cliente">Cliente</option>
+                        <option value="Vendedor">Vendedor</option>
+                    </select>
+                </div>
+                <div class="form-group ">
+                    <label for="">Ingrese una contraseña</label>
+                    <input type="password" name="contraseña" class="form-control" id="" placeholder="Ingrese contraseña">
+                </div>
+                <div class="form-group ">
+                    <label for="">Repita contraseña</label>
+                    <input type="password"  name="repita_contraseña" class="form-control" id="" placeholder="Repita contraseña">
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2 w-100">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

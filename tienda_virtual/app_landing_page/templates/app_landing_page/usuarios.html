@@ -1,0 +1,22 @@
+{%extends "app_landing_page/base.html"%}
+{%block title%}Usuarios{%endblock%}
+
+{%block content%}
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/stilos.css' %}">
+    <h1 class="text-center">Datos de usuarios registrados</h1>
+
+    <div class="d-flex flex-row justify-content-start">
+        {%for usuarios in usuarios %}
+            <div class="card" style="width: 18rem; margin-left: 5px;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre: {{usuarios.nombre}}</li>
+                    <li class="list-group-item">Apellido: {{usuarios.apellido}}</li>
+                    <li class="list-group-item">Dirección: {{usuarios.direccion}}</li>
+                    <li class="list-group-item">Correo Electronico: {{usuarios.correo}}</li>
+                </ul>
+            </div>
+        {%endfor%}
+    </div>
+
+{%endblock%}

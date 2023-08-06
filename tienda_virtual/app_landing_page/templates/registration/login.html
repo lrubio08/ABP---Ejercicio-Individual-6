@@ -1,0 +1,28 @@
+{%extends "app_landing_page/base.html"%}
+
+{%block title%} Inicio de Sesión {%endblock%}
+{%load static%}
+{%block content%}
+<link rel="stylesheet" href="{% static 'css/stilos.css' %}">
+<div class="container ">
+    <h1 class="text-center">Inicia sesión</h1>
+    <div class="row  justify-content-center ">
+        <div class="col-lg-8">
+            <form class="inicio-sesion" method="POST" action="{% url 'iniciar_sesion' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="" class="form-label">Nombre de usuario</label>
+                    <input type="texto" name="username" class="form-control" >
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-dark w-100" >Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}
